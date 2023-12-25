@@ -4,8 +4,8 @@
 
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
-String agAdi = "TurkTelekom2.4";      //kablosuz ag ad
-String agSifresi = "emreburak1234*";  //kablosuz ag sifre
+String agAdi = "***";      //kablosuz ag ad
+String agSifresi = "****";  //kablosuz ag sifre
 
 String ip = "184.106.153.149";  //thingspeak sitesinin ip adresi
 
