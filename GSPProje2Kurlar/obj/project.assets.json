@@ -239,11 +239,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\burak\\OneDrive\\Masaüstü\\Yeni klasör\\DERS\\Gömülü Sistem Programlama\\Ardunio Kodlari\\GSPProje2Kurlar\\GSPProje2Kurlar.csproj",
+      "projectUniqueName": "C:\\Users\\burak\\OneDrive\\Masaüstü\\Yeni klasör\\DERS\\Gömülü Sistem Programlama\\GSPFinalProjeleri\\GSPProje2Kurlar\\GSPProje2Kurlar.csproj",
       "projectName": "GSPProje2Kurlar",
-      "projectPath": "C:\\Users\\burak\\OneDrive\\Masaüstü\\Yeni klasör\\DERS\\Gömülü Sistem Programlama\\Ardunio Kodlari\\GSPProje2Kurlar\\GSPProje2Kurlar.csproj",
+      "projectPath": "C:\\Users\\burak\\OneDrive\\Masaüstü\\Yeni klasör\\DERS\\Gömülü Sistem Programlama\\GSPFinalProjeleri\\GSPProje2Kurlar\\GSPProje2Kurlar.csproj",
       "packagesPath": "C:\\Users\\burak\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\burak\\OneDrive\\Masaüstü\\Yeni klasör\\DERS\\Gömülü Sistem Programlama\\Ardunio Kodlari\\GSPProje2Kurlar\\obj\\",
+      "outputPath": "C:\\Users\\burak\\OneDrive\\Masaüstü\\Yeni klasör\\DERS\\Gömülü Sistem Programlama\\GSPFinalProjeleri\\GSPProje2Kurlar\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -300,7 +300,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400-preview.23274.1\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

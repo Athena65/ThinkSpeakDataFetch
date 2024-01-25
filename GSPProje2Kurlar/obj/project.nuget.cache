@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0y/uY1mGH81z+gMSVlqTjpKXVDm27FBSMTWHNb0tdDW72Jb9Yb8X+P4KJXufBckA8CpvHwbKwswWLj78RWfYWw==",
+  "dgSpecHash": "rtORHfDQNwMaG86uDqN2eZLmTGI8HxeftpIovOyfG+r/u1WOURkl+bnrOcK/Lb+CandGQM12BJK7miKZ5SzOqg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\burak\\OneDrive\\Masaüstü\\Yeni klasör\\DERS\\Gömülü Sistem Programlama\\Ardunio Kodlari\\GSPProje2Kurlar\\GSPProje2Kurlar.csproj",
+  "projectFilePath": "C:\\Users\\burak\\OneDrive\\Masaüstü\\Yeni klasör\\DERS\\Gömülü Sistem Programlama\\GSPFinalProjeleri\\GSPProje2Kurlar\\GSPProje2Kurlar.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\burak\\.nuget\\packages\\runtime.linux-arm.runtime.native.system.io.ports\\8.0.0\\runtime.linux-arm.runtime.native.system.io.ports.8.0.0.nupkg.sha512",
     "C:\\Users\\burak\\.nuget\\packages\\runtime.linux-arm64.runtime.native.system.io.ports\\8.0.0\\runtime.linux-arm64.runtime.native.system.io.ports.8.0.0.nupkg.sha512",

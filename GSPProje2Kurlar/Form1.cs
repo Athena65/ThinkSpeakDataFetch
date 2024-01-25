@@ -1,4 +1,4 @@
-using System.IO.Ports;
+﻿using System.IO.Ports;
 
 namespace GSPProje2Kurlar
 {
@@ -21,7 +21,7 @@ namespace GSPProje2Kurlar
                 lblHaberlesme.BackColor = Color.Green;
                 //Button textleri
                 btnSeriClose.Text = "Seri Haberlesmeyi kapat";
-                btnSeriOpen.Text = "Seri Haberlesmeyi a�";
+                btnSeriOpen.Text = "Seri Haberlesmeyi aç";
                 btnEUR.Text = "EUR-TL";
                 btnUSD.Text = "Dolar-TL";
                 btnAltin.Text = "Gram Altin-TL";
@@ -88,14 +88,22 @@ namespace GSPProje2Kurlar
         {
             try
             {
-                seri.Close();
-                lblHaberlesme.Text = "Arduino ile Baglanti Kesildi";
-                lblHaberlesme.BackColor = Color.Red;
-                //Button gorunurluk
-                btnEUR.Visible = false;
-                btnUSD.Visible = false;
-                btnAltin.Visible = false;
-                btnGBP.Visible = false;
+                if (!seri.IsOpen)
+                {
+                    lblHaberlesme.Text = "Seri Haberlesme zaten kapalı";
+                }
+                else
+                {
+                    seri.Close();
+                    lblHaberlesme.Text = "Arduino ile Baglanti Kesildi";
+                    lblHaberlesme.BackColor = Color.Red;
+                    //Button gorunurluk
+                    btnEUR.Visible = false;
+                    btnUSD.Visible = false;
+                    btnAltin.Visible = false;
+                    btnGBP.Visible = false;
+                }
+
             }
             catch (Exception ex)
             {

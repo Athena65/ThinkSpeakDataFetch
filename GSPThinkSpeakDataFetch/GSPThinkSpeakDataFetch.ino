@@ -1,27 +1,22 @@
-#include <SoftwareSerial.h>
-#include <Wire.h>
+#include <SoftwareSerial.h> //esp 8266
 #include <LiquidCrystal_I2C.h>
 
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
-String agAdi = "***";      //kablosuz ag ad
-String agSifresi = "****";  //kablosuz ag sifre
+String agAdi = "";      //kablosuz ag ad
+String agSifresi = "";  //kablosuz ag sifresş
 
 String ip = "184.106.153.149";  //thingspeak sitesinin ip adresi
 
 #define DEBUG true
-//farkli api'lari kullanmak icin butonlar
-int data;
+int data; //seri haberlesme icin
 
 SoftwareSerial esp(11, 12);  //tx,rx pinleri
 
 void setup() {
   lcd.begin();
-
   Serial.begin(9600);  //Seri port haberlesme
   esp.begin(115200);   //esp haberlesmesi
-  //esp.begin(9600);
-  //esp.println("AT+UART_DEF=9600,8,1,0,0"); //bu satir esp modulu 115200 ise 1 defa calistirilir ve 9600 yapilmis olur
 
   esp.println("AT");
   Serial.println("AT Yollandi");
@@ -42,8 +37,7 @@ void setup() {
   Serial.println("Modul client olarak ayarlandi");
   Serial.println("Aga Baglaniliyor... ");
   esp.println("AT+CWJAP=\"" + agAdi + "\",\"" + agSifresi + "\"");  //kablosuz aga baglanir
-  while (!esp.find("OK"))
-    ;  //aga baglanana kadar beklenir
+  while (!esp.find("OK"));  //aga baglanana kadar beklenir
   Serial.println("Ağa Baglandi.");
   delay(1000);
 
@@ -52,22 +46,14 @@ void setup() {
 }
 
 void loop() {
-  esp.println("AT+CIPSTART=\"TCP\",\"" + ip + "\",80");  //Thingspeak sitesine TCP portokoluyle baglanilir
-  if (esp.find("Error"))                                 //hata kontrolu yapilir
+  //Thingspeak sitesine TCP portokoluyle baglanilir  
+  esp.println("AT+CIPSTART=\"TCP\",\"" + ip + "\",80");
+  //hata kontrolu yapilir
+  if (esp.find("Error"))                                 
   {
     Serial.println("AT+CIPSTART Error");
   }
-  // Serial.println(sterlin());
-  // Serial.println(euro());
-  //Button'a gore euro veya sterlin verisini gosteren if komutu yap
 
-  /*
- lcd.print(sterlin()); */
- //euro
-       /*lcd.home();
-      lcd.print("Euro-TL");
-      lcd.setCursor(4, 1);
-      lcd.print(euro());*/
     if (Serial.available()) 
     {  
         data = Serial.read();  
@@ -112,8 +98,7 @@ void loop() {
           Serial.print(gramaltin());
         }      
     }  
-
-
+    
   Serial.println("Baglanti kapatildi");
   esp.println("AT+CIPCLOSE");  //baglanti kapatma komutu
   delay(1000);
@@ -124,11 +109,11 @@ String euro() {
   String rest = "AT+CIPSEND=90";  //gonderilecek karakter sayisi
   rest += "\r\n";
   sendData(rest, 2000, 0);  //2 saniye
-  String hostt = "GET https://api.thingspeak.com/apps/thinghttp/send_request?api_key=R6I3CZKNFFO4Y8T0";
-  hostt += "\r\n";  //icindeki veri temizlenir ve yeni satira gecer.
-  hostt += "Host:api.thingspeak.com";
-  hostt += "\r\n\r\n\r\n\r\n\r\n";
-  String Euro = sendData(hostt, 2000, 1);
+  String host = "GET https://api.thingspeak.com/apps/thinghttp/send_request?api_key=R6I3CZKNFFO4Y8T0";
+  host += "\r\n";  //icindeki veri temizlenir ve yeni satira gecer.
+  host += "Host:api.thingspeak.com";
+  host += "\r\n\r\n\r\n\r\n\r\n";
+  String Euro = sendData(host, 2000, 1);
 
   //gelen verinin icinden sadece 2.spandeki euro degeri bilgisi alinir.
   int baslangic = Euro.indexOf(':');
@@ -141,11 +126,11 @@ String sterlin() {
   String rest = "AT+CIPSEND=90";  //gonderilecek karakter sayisi
   rest += "\r\n";
   sendData(rest, 2000, 0);  //2 saniye
-  String hostt = "GET https://api.thingspeak.com/apps/thinghttp/send_request?api_key=J2GDPDMC40T07KV0";
-  hostt += "\r\n";  //icindeki veri temizlenir ve yeni satira gecer.
-  hostt += "Host:api.thingspeak.com";
-  hostt += "\r\n\r\n\r\n\r\n\r\n";
-  String Sterlin = sendData(hostt, 2000, 1);
+  String host = "GET https://api.thingspeak.com/apps/thinghttp/send_request?api_key=J2GDPDMC40T07KV0";
+  host += "\r\n";  //icindeki veri temizlenir ve yeni satira gecer.
+  host += "Host:api.thingspeak.com";
+  host += "\r\n\r\n\r\n\r\n\r\n";
+  String Sterlin = sendData(host, 2000, 1);
 
   //gelen verinin icinden sadece 2.spandeki sterlin degeri bilgisi alinir.
   int baslangic = Sterlin.indexOf(':');
@@ -158,11 +143,11 @@ String dolar() {
   String rest = "AT+CIPSEND=90";  //gonderilecek karakter sayisi
   rest += "\r\n";
   sendData(rest, 2000, 0);  //2 saniye
-  String hostt = "GET https://api.thingspeak.com/apps/thinghttp/send_request?api_key=98GWZS3X1L2GQ0VA";
-  hostt += "\r\n";  //icindeki veri temizlenir ve yeni satira gecer.
-  hostt += "Host:api.thingspeak.com";
-  hostt += "\r\n\r\n\r\n\r\n\r\n";
-  String Dolar = sendData(hostt, 2000, 1);
+  String host = "GET https://api.thingspeak.com/apps/thinghttp/send_request?api_key=98GWZS3X1L2GQ0VA";
+  host += "\r\n";  //icindeki veri temizlenir ve yeni satira gecer.
+  host += "Host:api.thingspeak.com";
+  host += "\r\n\r\n\r\n\r\n\r\n";
+  String Dolar = sendData(host, 2000, 1);
 
   //gelen verinin icinden sadece 2.spandeki sterlin degeri bilgisi alinir.
   int baslangic = Dolar.indexOf(':');
@@ -175,11 +160,11 @@ String gramaltin() {
   String rest = "AT+CIPSEND=90";  //gonderilecek karakter sayisi
   rest += "\r\n";
   sendData(rest, 2000, 0);  //2 saniye
-  String hostt = "GET https://api.thingspeak.com/apps/thinghttp/send_request?api_key=BPQF0U7WBWVYHZT8";
-  hostt += "\r\n";  //icindeki veri temizlenir ve yeni satira gecer.
-  hostt += "Host:api.thingspeak.com";
-  hostt += "\r\n\r\n\r\n\r\n\r\n";
-  String Altin = sendData(hostt, 2000, 1);
+  String host = "GET https://api.thingspeak.com/apps/thinghttp/send_request?api_key=BPQF0U7WBWVYHZT8";
+  host += "\r\n";  //icindeki veri temizlenir ve yeni satira gecer.
+  host += "Host:api.thingspeak.com";
+  host += "\r\n\r\n\r\n\r\n\r\n";
+  String Altin = sendData(host, 2000, 1);
 
   //gelen verinin icinden sadece 2.spandeki altin degeri bilgisi alinir.
   int baslangic = Altin.indexOf(':');
@@ -202,9 +187,5 @@ String sendData(String komut, const int gecenzaman, boolean debug) {
       response += c;        //cdeki veriler response degiskenine yazilir.
     }
   }
-  /*if(debug) //hata olursa
-  {
-    Serial.print(response);//31,6279
-  }*/
   return response;  //31,6279
 }
