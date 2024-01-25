@@ -1,2 +1,3 @@
 # ThinkSpeakDataFetch
- reading data from internet and viewing on lcd monitor
+ reading data from internet and viewing on lcd monitor.
+ ## MAke sure to write your wifi name and password into .ino file.
